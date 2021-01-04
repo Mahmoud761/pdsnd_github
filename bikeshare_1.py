@@ -83,9 +83,10 @@ def time_stats(df):
     start_time = time.time()
 
     # TO DO: display the most common month
-    months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun' ]
-    month = df['month'].mode()[0]
-    print(f'the most common month is: {months[month-1]}')
+    df['month'] = df['Start Time'].dt.month
+    common_month = df['month'].mode()[0]
+    print(f'the most common month is: {common_month}')
+
     # TO DO: display the most common day of week
     day = df['day_of_week'].mode()[0]
     print(f'the most commen day is: {day}')
@@ -147,7 +148,8 @@ def user_stats(df):
     start_time = time.time()
 
     # TO DO: Display counts of user types
-    print(df['User Type'].value_counts())
+    user_types = df['User Type'].value_counts()
+    print(user_types)
     print('\n\n')
 
     # TO DO: Display counts of gender
